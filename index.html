@@ -3,121 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vivante 2k25 - Wizarding Wonders | IISER Tirupati</title>
+    <title>Wizarding World Experience</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <div class="nav-container">
-        <nav class="navbar">
+    <div class="container">
+        <!-- Header Section -->
+        <header class="main-header">
             <div class="logo">
-                <div class="logo-img"></div>
-                <div class="logo-text">Vivante</div>
+                <h1>Wizarding World Experience</h1>
+                <p class="release-date">NOVEMBER 2025</p>
             </div>
-            <button class="mobile-menu-btn">≡</button>
-            <ul class="nav-links">
-                <li><a href="#" class="nav-link active">Home</a></li>
-                <li><a href="#events" class="nav-link">Events</a></li>
-                <li><a href="#gallery" class="nav-link">Gallery</a></li>
-                <li><a href="#games" class="nav-link">Games</a></li>
-                <li><a href="#merch" class="nav-link">Merch</a></li>
-                <li><a href="#team" class="nav-link">Our Team</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-        </nav>
-    </div>
-
-    <div class="parchment">
-        <div class="stain"></div>
-        <div class="stain"></div>
-        <div class="stain"></div>
-
-        <header>
-            <h1>Vivante 2k25</h1>
-            <h2>Wizarding Wonders</h2>
-            <p>IISER Tirupati Annual Fest | March 24-30, 2025</p>
-            <div>
-                <span class="wizard-icon wizard-hat"></span>
-                <span class="wizard-icon magic-wand"></span>
+            <div class="header-content">
+                <div class="portal-frame">
+                    <div class="portal-image"></div>
+                </div>
+                <div class="header-text">
+                    <p class="header-subtitle">YOUR COMPLETE MAGICAL EXPERIENCE</p>
+                </div>
+                <div class="format-icons">
+                    <span>DVD</span>
+                    <span>BLU-RAY</span>
+                    <span>DIGITAL</span>
+                </div>
             </div>
         </header>
 
-        <div class="countdown">
-            <p>The magical journey begins in:</p>
-            <div class="countdown-timer">
-                <div class="countdown-item">
-                    <div class="countdown-number" id="days">--</div>
-                    <div>Days</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="hours">--</div>
-                    <div>Hours</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="minutes">--</div>
-                    <div>Minutes</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="seconds">--</div>
-                    <div>Seconds</div>
-                </div>
+        <!-- Navigation Sections -->
+        <nav class="main-nav">
+            <!-- Section I -->
+            <div class="nav-section" id="section-1">
+                <h2 class="section-title">I <span class="arrow">→</span> EXTRAS</h2>
+                <ul class="nav-items">
+                    <li>Behind the Magic</li>
+                    <li>Deleted Scenes</li>
+                    <li>Interviews</li>
+                    <li>Bloopers</li>
+                    <li>More</li>
+                </ul>
             </div>
-        </div>
 
-        <div class="main-content">
-            <div class="section">
-                <h3>About the Magical Gathering</h3>
-                <p>Welcome to Vivante 2k25, the most enchanting event of the year at IISER Tirupati! Our annual fest transforms our campus into a realm of Wizarding Wonders, where science meets magic and reality blends with fantasy.</p>
-                <p>Join us for an unforgettable week of magical competitions, mesmerizing performances, and mystical exhibitions. Whether you're from Hogwarts, Middle-earth, or the muggle world, there's something here for every aspiring wizard!</p>
-                <a href="#" class="register-btn">Register Your Attendance</a>
+            <!-- Section II -->
+            <div class="nav-section" id="section-2">
+                <h2 class="section-title">II <span class="arrow">←</span> SCENES</h2>
+                <ul class="nav-items scene-thumbnails">
+                    <li><div class="thumbnail"></div></li>
+                    <li><div class="thumbnail"></div></li>
+                    <li><div class="thumbnail"></div></li>
+                    <li><div class="thumbnail"></div></li>
+                </ul>
             </div>
-            <div class="section">
-                <h3>Important Dates</h3>
-                <p><strong>Festival Duration:</strong> March 24-30, 2025</p>
-                <p><strong>Main Events:</strong> March 29-30, 2025</p>
-                <p><strong>Registration Opens:</strong> February 28, 2025</p>
-                <p><strong>Last Date for Registration:</strong> March 20, 2025</p>
-                <p>Mark your magical calendars and prepare your wands! More specific timings for individual events will be revealed as the ancient scrolls are deciphered.</p>
-            </div>
-        </div>
 
-        <div id="events" class="map-container">
-            <h3>Map of Magical Events</h3>
-            <div class="events-map">
-                <div class="compass"></div>
-                <p>The detailed map of events will be revealed soon...</p>
-                <p>Stay tuned for updates on the magical locations and timetables!</p>
+            <!-- Section III -->
+            <div class="nav-section" id="section-3">
+                <h2 class="section-title">III <span class="arrow">→</span> EXPLORE</h2>
             </div>
-        </div>
+        </nav>
 
-        <div class="main-content">
-            <div class="section">
-                <h3>Magical Categories</h3>
-                <p><strong>Spellbinding Competitions:</strong> Test your skills in various magical disciplines.</p>
-                <p><strong>Enchanted Performances:</strong> Witness extraordinary talents from wizards near and far.</p>
-                <p><strong>Potion Workshops:</strong> Learn the art of brewing scientific concoctions.</p>
-                <p><strong>Magical Marketplace:</strong> Explore stalls offering rare and wondrous items.</p>
+        <!-- Media Sections -->
+        <section class="media-section">
+            <h3>HOME SECTION</h3>
+            <div class="responsive-showcase">
+                <div class="desktop-view">
+                    <div class="home-preview"></div>
+                </div>
+                <div class="mobile-view">
+                    <div class="home-preview-mobile"></div>
+                </div>
             </div>
-            <div id="contact" class="section">
-                <h3>Contact the Council of Wizards</h3>
-                <p>For inquiries about the magical gathering, send an owl to:</p>
-                <p><strong>Email:</strong> vivante2k25@iisertirupati.ac.in</p>
-                <p><strong>Phone:</strong> +91 XXXXXXXXXX</p>
-                <p><strong>Location:</strong> IISER Tirupati, Transit Campus, Karakambadi Road, Tirupati, Andhra Pradesh</p>
-            </div>
-        </div>
+        </section>
 
-        <footer>
-            <p>© 2025 Vivante - IISER Tirupati Annual Fest | All Rights Reserved</p>
-            <div class="social-links">
-                <a href="#" class="social-link">Instagram</a>
-                <a href="#" class="social-link">Facebook</a>
-                <a href="#" class="social-link">Twitter</a>
-                <a href="#" class="social-link">YouTube</a>
+        <section class="media-section">
+            <h3>TRAILER SECTION</h3>
+            <div class="responsive-showcase">
+                <div class="mobile-view">
+                    <div class="trailer-preview-mobile"></div>
+                </div>
+                <div class="desktop-view">
+                    <div class="trailer-preview">
+                        <div class="video-overlay">HD</div>
+                    </div>
+                </div>
             </div>
-        </footer>
+        </section>
+
+        <section class="media-section">
+            <h3>SCENE SECTION</h3>
+            <div class="responsive-showcase">
+                <div class="desktop-view">
+                    <div class="scene-preview"></div>
+                </div>
+                <div class="mobile-view">
+                    <div class="scene-preview-mobile"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="media-section">
+            <h3>CHARACTER SECTION</h3>
+            <div class="responsive-showcase">
+                <div class="mobile-view">
+                    <div class="character-preview-mobile"></div>
+                </div>
+                <div class="desktop-view">
+                    <div class="character-carousel">
+                        <div class="character-item"></div>
+                        <div class="character-item"></div>
+                        <div class="character-item"></div>
+                        <div class="character-item"></div>
+                        <div class="character-item"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="media-section">
+            <h3>NEWS SECTION</h3>
+            <div class="responsive-showcase">
+                <div class="desktop-view">
+                    <div class="news-preview"></div>
+                </div>
+                <div class="mobile-view">
+                    <div class="news-preview-mobile"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="media-section">
+            <h3>GALLERY SECTION</h3>
+            <div class="responsive-showcase">
+                <div class="mobile-view">
+                    <div class="gallery-grid-mobile">
+                        <div class="gallery-item"></div>
+                        <div class="gallery-item"></div>
+                        <div class="gallery-item"></div>
+                        <div class="gallery-item"></div>
+                    </div>
+                </div>
+                <div class="desktop-view">
+                    <div class="gallery-grid">
+                        <div class="gallery-item"></div>
+                        <div class="gallery-item"></div>
+                        <div class="gallery-item"></div>
+                        <div class="gallery-item"></div>
+                        <div class="gallery-item"></div>
+                        <div class="gallery-item"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="media-section">
+            <h3>FOOTER SECTION</h3>
+            <div class="responsive-showcase">
+                <div class="desktop-view">
+                    <div class="footer-preview">
+                        <h1>Wizarding World Experience</h1>
+                    </div>
+                </div>
+                <div class="mobile-view">
+                    <div class="footer-preview-mobile">
+                        <h1>Wizarding World</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>

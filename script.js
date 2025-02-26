@@ -1,87 +1,197 @@
-// Mobile menu toggle
+// Main JavaScript for enhancing the website experience
+
 document.addEventListener('DOMContentLoaded', function() {
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
+    // Initialize interactive elements
+    initNavigation();
+    initPortalEffect();
+    initCharacterCarousel();
     
-    menuBtn.addEventListener('click', function() {
-        navLinks.classList.toggle('active');
-    });
+    // Add responsive behavior
+    handleResponsiveLayout();
     
-    // Close menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!event.target.closest('.navbar')) {
-            navLinks.classList.remove('active');
-        }
-    });
+    // Add loading animation
+    simulateLoading();
 });
 
-// Countdown Timer
-function updateCountdown() {
-    const festDate = new Date('March 29, 2025 00:00:00').getTime();
-    const now = new Date().getTime();
-    const distance = festDate - now;
+// Initialize navigation interactions
+function initNavigation() {
+    const navSections = document.querySelectorAll('.nav-section');
     
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-    document.getElementById('days').innerHTML = days;
-    document.getElementById('hours').innerHTML = hours;
-    document.getElementById('minutes').innerHTML = minutes;
-    document.getElementById('seconds').innerHTML = seconds;
-    
-    if (distance < 0) {
-        clearInterval(countdownTimer);
-        document.getElementById('days').innerHTML = '0';
-        document.getElementById('hours').innerHTML = '0';
-        document.getElementById('minutes').innerHTML = '0';
-        document.getElementById('seconds').innerHTML = '0';
-    }
-}
-
-// Add more age effects to the parchment
-function addAgeEffects() {
-    const parchment = document.querySelector('.parchment');
-    for (let i = 0; i < 10; i++) {
-        const stain = document.createElement('div');
-        stain.classList.add('stain');
-        stain.style.width = Math.random() * 100 + 50 + 'px';
-        stain.style.height = stain.style.width;
-        stain.style.top = Math.random() * 100 + '%';
-        stain.style.left = Math.random() * 100 + '%';
-        stain.style.opacity = Math.random() * 0.1;
-        parchment.appendChild(stain);
-    }
-}
-
-// Smooth scroll for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 70, // Adjust for navbar height
-                behavior: 'smooth'
-            });
+    navSections.forEach(section => {
+        section.addEventListener('click', function() {
+            // Toggle active state
+            this.classList.toggle('active');
             
-            // Update active link
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
-            this.classList.add('active');
+            // Simulate content loading
+            const sectionId = this.id;
+            console.log(`Navigating to section: ${sectionId}`);
+            
+            // Add subtle animation
+            this.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 200);
+        });
+    });
+    
+    // Add hover effects to navigation items
+    const navItems = document.querySelectorAll('.nav-items li');
+    navItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateX(5px)';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateX(0)';
+        });
+    });
+}
+
+// Create magical portal effect
+function initPortalEffect() {
+    const portal = document.querySelector('.portal-frame');
+    const portalImage = document.querySelector('.portal-image');
+    
+    if (!portal || !portalImage) return;
+    
+    // Add subtle animation to portal
+    setInterval(() => {
+        portal.style.boxShadow = `0 0 ${15 + Math.random() * 15}px var(--portal-glow)`;
+    }, 2000);
+    
+    // Add parallax effect on mouse move
+    document.addEventListener('mousemove', (e) => {
+        const mouseX = e.clientX / window.innerWidth - 0.5;
+        const mouseY = e.clientY / window.innerHeight - 0.5;
+        
+        portalImage.style.transform = `translate(${mouseX * 20}px, ${mouseY * 20}px) scale(1.1)`;
+    });
+}
+
+// Initialize character carousel
+function initCharacterCarousel() {
+    const carousel = document.querySelector('.character-carousel');
+    if (!carousel) return;
+    
+    // Add smooth scrolling
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    
+    carousel.addEventListener('mousedown', (e) => {
+        isDown = true;
+        carousel.style.cursor = 'grabbing';
+        startX = e.pageX - carousel.offsetLeft;
+        scrollLeft = carousel.scrollLeft;
+    });
+    
+    carousel.addEventListener('mouseleave', () => {
+        isDown = false;
+        carousel.style.cursor = 'grab';
+    });
+    
+    carousel.addEventListener('mouseup', () => {
+        isDown = false;
+        carousel.style.cursor = 'grab';
+    });
+    
+    carousel.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - carousel.offsetLeft;
+        const walk = (x - startX) * 2;
+        carousel.scrollLeft = scrollLeft - walk;
+    });
+}
+
+// Handle responsive layout adjustments
+function handleResponsiveLayout() {
+    const checkLayout = () => {
+        const isMobile = window.innerWidth <= 768;
+        const sections = document.querySelectorAll('.media-section');
+        
+        sections.forEach(section => {
+            const desktopView = section.querySelector('.desktop-view');
+            const mobileView = section.querySelector('.mobile-view');
+            
+            if (isMobile) {
+                if (desktopView && mobileView) {
+                    desktopView.style.order = 2;
+                    mobileView.style.order = 1;
+                }
+            } else {
+                if (desktopView && mobileView) {
+                    desktopView.style.order = 1;
+                    mobileView.style.order = 2;
+                }
+            }
+        });
+    };
+    
+    // Check on load and resize
+    checkLayout();
+    window.addEventListener('resize', checkLayout);
+}
+
+// Simulate content loading
+function simulateLoading() {
+    const sections = document.querySelectorAll('.media-section');
+    
+    sections.forEach((section, index) => {
+        // Stagger loading animation
+        setTimeout(() => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
+            
+            // Fade in
+            setTimeout(() => {
+                section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                section.style.opacity = 1;
+                section.style.transform = 'translateY(0)';
+            }, 100);
+        }, index * 150);
+    });
+}
+
+// Add theme toggle functionality
+function initThemeToggle() {
+    const toggleBtn = document.createElement('button');
+    toggleBtn.innerHTML = '🌙';
+    toggleBtn.classList.add('theme-toggle');
+    toggleBtn.style.position = 'fixed';
+    toggleBtn.style.bottom = '20px';
+    toggleBtn.style.right = '20px';
+    toggleBtn.style.background = 'var(--primary-blue)';
+    toggleBtn.style.border = 'none';
+    toggleBtn.style.borderRadius = '50%';
+    toggleBtn.style.width = '40px';
+    toggleBtn.style.height = '40px';
+    toggleBtn.style.cursor = 'pointer';
+    toggleBtn.style.fontSize = '20px';
+    toggleBtn.style.boxShadow = '0 2px 10px var(--shadow-color)';
+    
+    document.body.appendChild(toggleBtn);
+    
+    let darkMode = true;
+    
+    toggleBtn.addEventListener('click', () => {
+        darkMode = !darkMode;
+        
+        if (darkMode) {
+            document.documentElement.style.setProperty('--primary-dark', '#0a1620');
+            document.documentElement.style.setProperty('--primary-blue', '#172a3a');
+            document.documentElement.style.setProperty('--accent-blue', '#1e4163');
+            document.documentElement.style.setProperty('--text-light', '#e3e8ec');
+            toggleBtn.innerHTML = '🌙';
+        } else {
+            document.documentElement.style.setProperty('--primary-dark', '#e8f0f5');
+            document.documentElement.style.setProperty('--primary-blue', '#bcd4e6');
+            document.documentElement.style.setProperty('--accent-blue', '#8fb8d8');
+            document.documentElement.style.setProperty('--text-light', '#172a3a');
+            toggleBtn.innerHTML = '☀️';
         }
     });
-});
+}
 
-// Run functions when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-    addAgeEffects();
-});
+// Call theme toggle initialization
+setTimeout(initThemeToggle, 1000);
